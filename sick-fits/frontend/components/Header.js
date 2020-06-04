@@ -1,20 +1,6 @@
-import React, { Component } from "react";
+import Nav from "./Nav";
 import Link from "next/link";
 import styled from "styled-components";
-import Nav from "./Nav";
-import Router from "next/router";
-import NProgress from "nprogress";
-
-Router.events.on("routeChangeStart", () => {
-  NProgress.start();
-  console.log("test");
-});
-Router.events.on("routeChangeComplete", () => {
-  NProgress.done();
-});
-Router.events.on("routeChangeError", () => {
-  NProgress.done();
-});
 
 const Logo = styled.h1`
   font-size: 4rem;
@@ -54,25 +40,21 @@ const StyledHeader = styled.header`
   }
 `;
 
-class Header extends Component {
-  render() {
-    return (
-      <StyledHeader>
-        <div className="bar">
-          <Logo>
-            <Link href="/">
-              <a>Sick Fits</a>
-            </Link>
-          </Logo>
-          <Nav />
-        </div>
-        <div className="sub-bar">
-          <p>Search</p>
-        </div>
-        <div>Cart</div>
-      </StyledHeader>
-    );
-  }
-}
+const Header = () => (
+  <StyledHeader>
+    <div className="bar">
+      <Logo>
+        <Link href="/">
+          <a>Sick Fits</a>
+        </Link>
+      </Logo>
+      <Nav />
+    </div>
+    <div className="sub-bar">
+      <p>Search</p>
+    </div>
+    <div>Cart</div>
+  </StyledHeader>
+);
 
 export default Header;
